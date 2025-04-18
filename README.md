@@ -85,7 +85,7 @@
 
   <div class="nav-links" id="navLinks">
     <a href="kalam-urdu.html">क़लम से - Urdu/Hindi</a>
-    <a href="kalam-english.html">Kalam Se - English</a>
+    <a href="kalam-english.html">English poetry - English</a>
     <a href="podcast.html">Hind & Hindavi Podcast</a>
     <a href="video.html">Kissa Jeevan Ka (Video)</a>
   </div>
