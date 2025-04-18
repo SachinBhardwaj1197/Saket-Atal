@@ -8,51 +8,83 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #FF9933; /* Saffron */
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/India_flag_map.svg/1024px-India_flag_map.svg.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 50%;
+      background: linear-gradient(to bottom, #FF9933, #ffffff);
       color: #222;
       transition: background-color 0.3s, color 0.3s;
-    }header {
-  background-color: rgba(0, 0, 0, 0.7);
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }body::before {
+  content: "";
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/India_flag_map.svg/1024px-India_flag_map.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+header p {
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 nav {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1rem;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
 }
 
 .menu {
   display: none;
   background-color: #fff;
   position: absolute;
-  top: 3.5rem;
-  right: 1rem;
+  top: 3rem;
+  right: 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  z-index: 999;
+  z-index: 3;
 }
 
 .menu a {
   display: block;
-  padding: 10px;
+  padding: 10px 15px;
   color: #000;
   text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.menu a:last-child {
+  border-bottom: none;
 }
 
 .hamburger {
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
   background-color: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode {
@@ -62,15 +94,15 @@ nav {
 
 .controls {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
   gap: 1rem;
-  z-index: 1000;
+  z-index: 4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .controls label {
