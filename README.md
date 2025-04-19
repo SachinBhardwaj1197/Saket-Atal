@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saket Atal ki Rachnayen</title>
+  <title>साकेत अटल की रचनाएँ</title>
   <!-- Google Fonts Integration -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,22 +28,6 @@
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1d/India_Map_Silhouette.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80% auto;
-  opacity: 0.12;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
 header {
   background: linear-gradient(135deg, #000080, #000000);
   color: white;
@@ -59,7 +43,6 @@ header h1 {
   font-family: var(--header-font);
   font-size: 3rem;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
 }
 
@@ -104,13 +87,10 @@ nav {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   font-family: var(--menu-font);
   font-weight: 500;
-  transition: all 0.2s ease;
-  white-space: nowrap;
 }
 
 .menu a:hover {
   background-color: rgba(255, 153, 51, 0.1);
-  padding-left: 25px;
   color: var(--primary-color);
 }
 
@@ -121,7 +101,6 @@ nav {
   color: #000080;
   padding: 5px 15px;
   border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode {
@@ -134,6 +113,11 @@ nav {
 }
 
 .dark-mode .menu a {
+  color: #f0f0f0;
+}
+
+.dark-mode .hamburger {
+  background-color: rgba(30, 30, 30, 0.9);
   color: #f0f0f0;
 }
 
@@ -150,45 +134,71 @@ nav {
   z-index: 4;
 }
 
-.controls label {
-  font-weight: 500;
+.dark-mode .controls {
+  background-color: rgba(30, 30, 30, 0.9);
 }
 
-.controls select, .controls input[type="color"] {
-  border: 1px solid #ccc;
+.controls input, .controls select {
+  border: none;
   border-radius: 6px;
   padding: 6px;
   font-family: var(--body-font);
 }
 
+.main-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contact-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.contact-content button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dark-mode .contact-content {
+  background-color: #222;
+  color: #eee;
+}
+
 footer {
   text-align: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
   font-size: 0.9rem;
-  padding: 1.5rem;
-  background: #f1f1f1;
-  color: #555;
-  margin-top: 2rem;
+  color: #444;
 }
 
   </style>
 </head>
 <body>
   <header>
-    <h1>Saket Atal ki Rachnayen</h1>
+    <h1>साकेत अटल की रचनाएँ</h1>
     <p>From the pen of Saket Atal</p>
-  </header>  <div class="main-content">
-    <!-- Your page content will go here -->
-  </div>  <div class="controls">
-    <button onclick="toggleTheme()">Light/Dark</button>
-    <label for="textColor">Text Color:</label>
-    <input type="color" id="textColor" onchange="changeTextColor(this.value)" />
-    <label for="fontSelect">Font:</label>
-    <select id="fontSelect" onchange="changeFont(this.value)">
-      <option value="Raleway, sans-serif">Raleway</option>
-      <option value="Poppins, sans-serif">Poppins</option>
-      <option value="Playfair Display, serif">Playfair Display</option>
-    </select>
-  </div>  <nav>
+  </header>  <nav>
     <span class="hamburger" onclick="toggleMenu()">☰</span>
     <div class="menu" id="menu">
       <a href="index.html">Home</a>
@@ -198,8 +208,30 @@ footer {
       <a href="english-poems.html">From My Quill: Poems</a>
       <a href="podcast.html">Podcast - Hind & Hindavi</a>
       <a href="video.html">Video Section - Kissa Jeevan Ka</a>
+      <a href="#" onclick="showContact()">Contact Us</a>
     </div>
-  </nav>  <footer>
+  </nav>  <div class="main-content">
+    <!-- Your content goes here -->
+  </div>  <div class="controls">
+    <button onclick="toggleTheme()">Light/Dark</button>
+    <label for="textColor">Text:</label>
+    <input type="color" id="textColor" onchange="changeTextColor(this.value)"><label for="fontSelect">Font:</label>
+<select id="fontSelect" onchange="changeFont(this.value)">
+  <option value="Raleway">Raleway</option>
+  <option value="Poppins">Poppins</option>
+  <option value="Playfair Display">Playfair Display</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Times New Roman">Times New Roman</option>
+</select>
+
+  </div>  <div id="contactModal" class="contact-modal">
+    <div class="contact-content">
+      <h3>Contact Us</h3>
+      <p><strong>Mobile:</strong> 7070946811</p>
+      <p><strong>Email:</strong> sachinbhardwaj.sb05@gmail.com</p>
+      <button onclick="closeContact()">Close</button>
+    </div>
+  </div>  <footer>
     &copy; 2025 Saket Atal. All rights reserved.
   </footer>  <script>
     function toggleMenu() {
@@ -215,7 +247,15 @@ footer {
       document.body.style.color = color;
     }
 
-    function changeFont(font) {
-      document.body.style.fontFamily = font;
+    function changeFont(fontName) {
+      document.body.style.fontFamily = fontName;
+    }
+
+    function showContact() {
+      document.getElementById('contactModal').style.display = 'block';
+    }
+
+    function closeContact() {
+      document.getElementById('contactModal').style.display = 'none';
     }
   </script></body>
