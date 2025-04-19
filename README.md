@@ -150,7 +150,25 @@ nav {
     <p>From the pen of Saket Atal</p>
   </header>  <div class="main-content" id="main-content">
     <!-- Poem titles or content here -->
-    <p>यहाँ आपकी कविताओं की सूची होगी।</p>
+    <p>
+गीत नया गाता हूँ
+
+टूटे हुए तारों से फूटे बासंती स्वर
+पत्थर की छाती मे उग आया नव अंकुर
+झरे सब पीले पात
+कोयल की कुहुक रात
+
+प्राची मे अरुणिम की रेख देख पता हूँ
+गीत नया गाता हूँ
+
+टूटे हुए सपनों की कौन सुने सिसकी
+अन्तर की चीर व्यथा पलको पर ठिठकी
+हार नहीं मानूँगा,
+रार नई ठानूँगा,
+
+काल के कपाल पे लिखता मिटाता हूँ
+गीत नया गाता हूँ ।
+      - श्री अटल बिहारी वाजपेई जी</p>
   </div>  <div class="controls">
     <button onclick="toggleTheme()">Light/Dark</button>
     <label for="textColor">Text Color:</label>
