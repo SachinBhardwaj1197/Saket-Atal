@@ -43,6 +43,7 @@ header h1 {
   font-family: var(--header-font);
   font-size: 3rem;
   margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
 }
 
@@ -87,10 +88,12 @@ nav {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   font-family: var(--menu-font);
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .menu a:hover {
   background-color: rgba(255, 153, 51, 0.1);
+  padding-left: 25px;
   color: var(--primary-color);
 }
 
@@ -116,11 +119,6 @@ nav {
   color: #f0f0f0;
 }
 
-.dark-mode .hamburger {
-  background-color: rgba(30, 30, 30, 0.9);
-  color: #f0f0f0;
-}
-
 .controls {
   position: fixed;
   bottom: 20px;
@@ -134,15 +132,8 @@ nav {
   z-index: 4;
 }
 
-.dark-mode .controls {
-  background-color: rgba(30, 30, 30, 0.9);
-}
-
-.controls input, .controls select {
-  border: none;
-  border-radius: 6px;
-  padding: 6px;
-  font-family: var(--body-font);
+.controls label {
+  font-weight: 500;
 }
 
 .main-content {
@@ -151,54 +142,26 @@ nav {
   z-index: 1;
 }
 
-.contact-modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0; width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.contact-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.contact-content button {
-  margin-top: 1rem;
-  padding: 0.5rem 1.2rem;
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.dark-mode .contact-content {
-  background-color: #222;
-  color: #eee;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #f0f0f0;
-  font-size: 0.9rem;
-  color: #444;
-}
-
   </style>
 </head>
 <body>
   <header>
     <h1>साकेत अटल की रचनाएँ</h1>
     <p>From the pen of Saket Atal</p>
-  </header>  <nav>
+  </header>  <div class="main-content" id="main-content">
+    <!-- Poem titles or content here -->
+    <p>यहाँ आपकी कविताओं की सूची होगी।</p>
+  </div>  <div class="controls">
+    <button onclick="toggleTheme()">Light/Dark</button>
+    <label for="textColor">Text Color:</label>
+    <input type="color" id="textColor" />
+    <label for="fontSelector">Font:</label>
+    <select id="fontSelector">
+      <option value="Raleway">Raleway</option>
+      <option value="Poppins">Poppins</option>
+      <option value="Playfair Display">Playfair Display</option>
+    </select>
+  </div>  <nav>
     <span class="hamburger" onclick="toggleMenu()">☰</span>
     <div class="menu" id="menu">
       <a href="index.html">Home</a>
@@ -208,31 +171,10 @@ footer {
       <a href="english-poems.html">From My Quill: Poems</a>
       <a href="podcast.html">Podcast - Hind & Hindavi</a>
       <a href="video.html">Video Section - Kissa Jeevan Ka</a>
-      <a href="#" onclick="showContact()">Contact Us</a>
+      <a href="#" onclick="alert('Mobile: 7070946811\nEmail: sachinbhardwaj.sb05@gmail.com')">Contact Us</a>
     </div>
-  </nav>  <div class="main-content">
-    <!-- Your content goes here -->
-  </div>  <div class="controls">
-    <button onclick="toggleTheme()">Light/Dark</button>
-    <label for="textColor">Text:</label>
-    <input type="color" id="textColor" onchange="changeTextColor(this.value)"><label for="fontSelect">Font:</label>
-<select id="fontSelect" onchange="changeFont(this.value)">
-  <option value="Raleway">Raleway</option>
-  <option value="Poppins">Poppins</option>
-  <option value="Playfair Display">Playfair Display</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Times New Roman">Times New Roman</option>
-</select>
-
-  </div>  <div id="contactModal" class="contact-modal">
-    <div class="contact-content">
-      <h3>Contact Us</h3>
-      <p><strong>Mobile:</strong> 7070946811</p>
-      <p><strong>Email:</strong> sachinbhardwaj.sb05@gmail.com</p>
-      <button onclick="closeContact()">Close</button>
-    </div>
-  </div>  <footer>
-    &copy; 2025 Saket Atal. All rights reserved.
+  </nav>  <footer style="text-align: center; padding: 1rem; font-size: 0.9rem; background-color: #f1f1f1;">
+    © 2025 Saket Atal. All rights reserved.
   </footer>  <script>
     function toggleMenu() {
       const menu = document.getElementById('menu');
@@ -243,19 +185,15 @@ footer {
       document.body.classList.toggle('dark-mode');
     }
 
-    function changeTextColor(color) {
-      document.body.style.color = color;
-    }
+    const colorPicker = document.getElementById('textColor');
+    const mainContent = document.getElementById('main-content');
 
-    function changeFont(fontName) {
-      document.body.style.fontFamily = fontName;
-    }
+    colorPicker.addEventListener('input', function () {
+      mainContent.style.color = this.value;
+    });
 
-    function showContact() {
-      document.getElementById('contactModal').style.display = 'block';
-    }
-
-    function closeContact() {
-      document.getElementById('contactModal').style.display = 'none';
-    }
+    const fontSelector = document.getElementById('fontSelector');
+    fontSelector.addEventListener('change', function () {
+      mainContent.style.fontFamily = this.value;
+    });
   </script></body>
